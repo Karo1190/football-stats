@@ -1,3 +1,10 @@
-<div class="application">
-  <app-header></app-header>
-</div>
+
+
+<mat-toolbar color="primary">
+    <a mat-flat-button color="primary" [routerLink]="['/search']" [routerLinkActive]="'active'" >STRONA GŁÓWNA</a>
+    <a mat-flat-button color="primary" [routerLink]="['/worldcup']" [routerLinkActive]="'active'">WORLD CUP</a>
+    <a mat-flat-button color="primary" [routerLink]="['/premiereLeague']" [routerLinkActive]="'active'">PREMIERE LEAGUE</a>
+    <a mat-flat-button color="primary" [routerLink]="['/laLiga']" [routerLinkActive]="'active'">LALIGA</a>
+    <a mat-flat-button color="primary" [routerLink]="['/bundesliga']" [routerLinkActive]="'active'">BUNDESLIGA</a>
+  </mat-toolbar>
+  <router-outlet></router-outlet>

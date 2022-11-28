@@ -1,0 +1,10 @@
+.container{
+    text-align: center;
+    position:fixed;
+    top: 35%;
+    left: 35%
+}
+
+h1{
+    font-size: 80px;
+}
