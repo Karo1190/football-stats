@@ -69,7 +69,8 @@
               "browserTarget": "football-stats:build:production"
             },
             "development": {
-              "browserTarget": "football-stats:build:development"
+              "browserTarget": "football-stats:build:development",
+              "proxyConfig": "src/proxy.conf.json"
             }
           },
           "defaultConfiguration": "development"
