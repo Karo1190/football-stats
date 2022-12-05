@@ -12,10 +12,10 @@ export class MatchesService {
   private token = '203682e4f50a426cbcb8de3d2f1b5614';
   constructor(private http: HttpClient) {}
 
-  getMatches(): Observable<any> {
+  getMatches(dateFrom: string, dateTo: string): Observable<any> {
     const myHeaders = new HttpHeaders({
       'X-Auth-Token': this.token,
     });
-    return this.http.get<any>('/api/matches', { headers: myHeaders });
+    return this.http.get<any>('/api/matches', {params: {dateFrom: dateFrom, dateTo: dateTo}, headers: myHeaders});
   }
 }

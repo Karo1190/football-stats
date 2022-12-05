@@ -1,13 +1,45 @@
+<!-- 
+<form [formGroup]="form" >
 
-<mat-form-field [formGroup]="form" color="primary" appearance="fill">
+  <mat-form-field color="primary" appearance="fill">
     <mat-label>Wybierz datę</mat-label>
-    <input matInput [matDatepicker]="picker" formControlName="matchDate"/>
+    <input matInput [matDatepicker]="picker" formControlName="matchDateFrom" (dateChange)= "onSearch()" />
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>  
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+  <mat-form-field color="primary" appearance="fill">
+    <mat-label>Wybierz datę</mat-label>
+    <input matInput [matDatepicker]="picker" formControlName="matchDateTo" (dateChange)= "onSearch()" />
     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>  
     <mat-datepicker #picker></mat-datepicker>
   </mat-form-field>
  
-  <button mat-raised-button color="primary" (click)="getMatches()">Wyszukaj</button>
+  <button mat-raised-button color="primary" (click)="onSearch()">Wyszukaj</button>
 <div *ngFor="let match of dataMatches">
     {{match.homeTeam?.name}}
 
 </div>
+
+</form> -->
+
+<form [formGroup]="form" >
+  <mat-form-field color="primary" appearance="fill">
+    <mat-label>Wybierz datę od</mat-label>
+    <input matInput [matDatepicker]="picker" formControlName="matchDateFrom" (dateChange)= "onSearchDate()">
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+  
+  <mat-form-field color="primary" appearance="fill">
+    <mat-label>Wybierz datę do</mat-label>
+    <input matInput [matDatepicker]="picker1" formControlName="matchDateTo" (dateChange)= "onSearchDate()">
+    <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+    <mat-datepicker #picker1></mat-datepicker>
+  </mat-form-field>
+
+  <!-- <button mat-raised-button color="primary" (click)="onSearchDate()">Wyszukaj</button>
+  <div *ngFor="let match of dataMatches">
+      {{match.homeTeam?.name}}
+  
+  </div> -->
+</form>

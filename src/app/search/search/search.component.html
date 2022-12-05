@@ -1,5 +1,12 @@
 <mat-drawer-container class="container">
-    <app-search-filter></app-search-filter>
+    <app-search-filter
+    (searchFilterForm)="getDate($event)">
+    </app-search-filter>
+    <button mat-raised-button color="primary" (click)="getMatches(dateFrom, dateTo)">Wyszukaj mecz</button>
+    <div *ngFor="let match of dataMatches">
+      {{match.awayTeam?.name}}
+  
+  </div>
   </mat-drawer-container>
 
 

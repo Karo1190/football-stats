@@ -1,8 +1,7 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { AbstractControl, FormBuilder, FormControl, FormGroup } from '@angular/forms';
-import { map } from 'rxjs';
+import { FormControl, FormGroup } from '@angular/forms';
+
 import { Match } from 'src/app/data.dto';
-import { MatchesService } from 'src/services/matches.service';
 
 @Component({
   selector: 'app-search-filter',
@@ -11,12 +10,11 @@ import { MatchesService } from 'src/services/matches.service';
 })
 export class SearchFilterComponent implements OnInit {
   form!: FormGroup;
-  pickedDate!: Date
-
-  // @Output() searchFilterForm = new EventEmitter<FormGroup>()
   dataMatches: Match[] = [];
 
-  constructor(private matches: MatchesService, private fb: FormBuilder) {}
+  @Output() searchFilterForm = new EventEmitter<FormGroup>();
+
+  constructor() {}
 
   ngOnInit(): void {
     this.createForm();
@@ -24,26 +22,12 @@ export class SearchFilterComponent implements OnInit {
 
   createForm(): void {
     this.form = new FormGroup({
-      matchDate: new FormControl(),
-      // testControl: new FormControl(),
+      matchDateTo: new FormControl(),
+      matchDateFrom: new FormControl(),
     });
   }
 
-  getForm() {
-
-    console.log((this.form.controls["matchDate"].value));
-    this.pickedDate = (this.form.controls["matchDate"].value);
-    this.pickedDate.getFullYear()
-    console.log( this.pickedDate.toLocaleDateString());
-    
-  }
-
-  getMatches() {
-    this.matches
-      .getMatches()
-      .pipe(map((el) => el.matches))
-      .subscribe((data) => {
-        return (this.dataMatches = data);
-      });
+  onSearchDate() {
+    this.searchFilterForm.emit(this.form);
   }
 }
